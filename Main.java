@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         ArvoreMorse arvore = new ArvoreMorse();
+        SomMorse som = new SomMorse();
         Scanner entrada = new Scanner(System.in);
         String opcao;
 
@@ -13,11 +14,15 @@ public class Main {
             switch (opcao) {
                 case "1":
                     System.out.print("Morse (letras separadas por espaço): ");
-                    System.out.println("Palavra: " + arvore.decodificar(entrada.nextLine()));
+                    String morseDigitado = entrada.nextLine();
+                    System.out.println("Palavra: " + arvore.decodificar(morseDigitado));
+                    som.tocar(morseDigitado);
                     break;
                 case "2":
                     System.out.print("Palavra: ");
-                    System.out.println("Morse: " + arvore.codificar(entrada.nextLine()));
+                    String morseGerado = arvore.codificar(entrada.nextLine());
+                    System.out.println("Morse: " + morseGerado);
+                    som.tocar(morseGerado);
                     break;
                 case "3":
                     arvore.imprimir();
